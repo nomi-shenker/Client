@@ -1,0 +1,28 @@
+<form (ngSubmit)="myForm" #myForm="ngForm">
+
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">שם </span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="firstName" [(ngModel)]="emptyChild.Name" required pattern="^[א-ת]+$">
+      </div>
+
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">תעודת זהות</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="id" [(ngModel)]="emptyChild.Tz" required pattern="^[0-9]*$">
+      </div>
+    
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">תאריך לידה</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="dateOfBirth" required [(ngModel)]="emptyChild.DateOfBirth">
+      </div>
+    
+     <input type="submit" class="btn btn-outline-danger" [disabled]=!myForm.form.valid value="שמירה" (click)="saveDetails(); myForm.reset()"/>
+
+    </form>
+    
+    

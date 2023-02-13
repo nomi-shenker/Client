@@ -1,0 +1,28 @@
+.form {
+    min-width: 150px;
+    max-width: 900px;
+    width: 100%;
+    padding-top: 150px;
+  }
+  .size{
+    width: 300px;
+  }
+  // input{
+  //  border-color: crimson;
+  // }
+  select{
+   color: crimson;
+  }
+  .aaaaa{
+   border-color: crimson;
+
+  }
+  input:focus{
+    border-color: crimson;
+    box-shadow: 0 0 15px crimson;
+  }
+  .input-group-text{
+    color: rgb(149, 7, 35);
+    background-color: rgb(250, 177, 194);
+  }
+  

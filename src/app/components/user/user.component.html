@@ -1,0 +1,58 @@
+<form   dir="rtl" (ngSubmit)="myForm" #myForm="ngForm">
+
+      <div class="input-group mb-1 size ">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">שם פרטי</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="firstName" (pointerleave)="setPersonalMessage()" [(ngModel)]="emptyUser.FirstName" pattern="^[א-ת]+$" required>
+      </div>
+
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text " id="inputGroup-sizing-default">שם משפחה</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="lastName" (pointerleave)="setPersonalMessage()" [(ngModel)]="emptyUser.LastName" pattern="^[א-ת]+$" required>
+      </div>
+
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">תעודת זהות</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="tz" [(ngModel)]="emptyUser.Tz" pattern="^[0-9]*$" required>
+      </div>
+
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">תאריך לידה</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="dateOfBirth" [(ngModel)]="emptyUser.DateOfBirth" required>
+      </div>
+
+      <div class="input-group mb-1 size">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">קופת חולים</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="HMO" [(ngModel)]="emptyUser.HMO" pattern="^[א-ת]+$" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">מין(זכר/נקבה)</label>
+        </div>
+        <select  name="gender" [(ngModel)]="gender" required class="custom-select" id="inputGroupSelect01">
+          <option value="male">זכר</option>
+          <option value="female">נקבה</option>
+        </select>
+      </div>
+
+<input type="button"  class="btn btn-outline-danger"  value="להוספת ילד" (click)="addChild()"/>
+<input type="button" class="btn btn-outline-danger"  value="חזרה לדף ההנחיות" (click)="openInstructions()"/>
+<input type="button" *ngIf="isRegistered" class="btn btn-outline-danger" value="לסיום" (click)="end()"/>
+
+<div  *ngFor="let child of emptyUser.childrenUser; let i=index">
+  <app-child  [emptyChild]="child"  (updateChild)="saveChild($event)"></app-child>
+</div>
+
+<input type="submit" class="btn btn-outline-danger" value="להרשמה" [disabled]=!myForm.form.valid (click)="saveDetails(); myForm.reset(); generateExcel()"/>
+
+</form>
